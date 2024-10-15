@@ -22,8 +22,13 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	name := req.Name
+	if name == "" {
+		name = "Stranger"
+	}
+
 	resp := Response{
-		Message: fmt.Sprintf("Hello, %s!", req.Name),
+		Message: fmt.Sprintf("Hello, %s!", name),
 	}
 
 	w.Header().Set("Content-Type", "application/json")
